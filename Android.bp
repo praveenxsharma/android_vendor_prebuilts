@@ -1,0 +1,16 @@
+android_app_import {
+    name: "Dialer",
+    apk: "Dialer.apk",
+    presigned: true,
+    privileged: true,
+    system_ext_specific: true,
+    overrides: ["Dialer", "GoogleDialer", "com.google.android.dialer"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-dialer.xml",
+    sub_dir: "permissions",
+    src: "privapp-permissions-dialer.xml",
+    filename_from_src: true,
+    system_ext_specific: true,
+}

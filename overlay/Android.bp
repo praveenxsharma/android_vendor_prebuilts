@@ -1,0 +1,5 @@
+runtime_resource_overlay {
+    name: "DialerOverlay",
+    system_ext_specific: true,
+    resource_dirs: ["res"],
+}
