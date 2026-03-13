@@ -1,0 +1,24 @@
+android_app_import {
+    name: "NothingGallery",
+    apk: "base.apk",
+    presigned: true,
+    privileged: true,
+    system_ext_specific: true,
+    arch: {
+        arm64: {
+            splits: [
+                "split_config.arm64_v8a.apk",
+                "split_config.en.apk",
+                "split_config.xxhdpi.apk",
+            ],
+        },
+    },
+    required: ["privapp-permissions-gallery.xml"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-gallery.xml",
+    src: "privapp-permissions-gallery.xml",
+    sub_dir: "permissions",
+    system_ext_specific: true,
+}
