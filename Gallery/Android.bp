@@ -2,23 +2,56 @@ android_app_import {
     name: "NothingGallery",
     apk: "base.apk",
     presigned: true,
+    preprocessed: true,
     privileged: true,
     system_ext_specific: true,
-    arch: {
-        arm64: {
-            splits: [
-                "split_config.arm64_v8a.apk",
-                "split_config.en.apk",
-                "split_config.xxhdpi.apk",
-            ],
-        },
-    },
-    required: ["privapp-permissions-gallery.xml"],
+    enforce_uses_libs: false,
+    // Add the critical libs to the required list
+    required: [
+        "privapp-permissions-gallery.xml",
+        "libcore",
+        "libtiff",
+        "libmpbase",
+    ],
 }
 
-prebuilt_etc {
-    name: "privapp-permissions-gallery.xml",
-    src: "privapp-permissions-gallery.xml",
-    sub_dir: "permissions",
+// Just define the most important ones that apps usually fail on first
+cc_prebuilt_library_shared {
+    name: "libcore",
+    target: {
+        android_arm64: {
+            srcs: ["lib/arm64/libcore.so"],
+        },
+    },
+    compile_multilib: "64",
+    check_elf_files: false,
     system_ext_specific: true,
 }
+
+cc_prebuilt_library_shared {
+    name: "libtiff",
+    target: {
+        android_arm64: {
+            srcs: ["lib/arm64/libtiff.so"],
+        },
+    },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmpbase",
+    target: {
+        android_arm64: {
+            srcs: ["lib/arm64/libmpbase.so"],
+        },
+    },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+// For the rest of the libraries, if the app still crashes, 
+// you can add them one by one or use a 'prebuilt_etc' 
+// to just dump the whole 'lib' folder into the system.
