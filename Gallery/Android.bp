@@ -6,23 +6,163 @@ android_app_import {
     privileged: true,
     system_ext_specific: true,
     enforce_uses_libs: false,
-    // Add the critical libs to the required list
     required: [
         "privapp-permissions-gallery.xml",
+        "libaipasserbysegmentation",
+        "libaiphotoeraser",
+        "libandroidx.graphics.path",
         "libcore",
+        "libcvface_api",
+        "libdata_crypto",
+        "libeyeglassreflectionreduction",
+        "libflarereduction",
+        "libglide-webp",
+        "libjni_classifier_api",
+        "libjni_cvface_api",
+        "libmedia_editor",
+        "libmlkitcommonpipeline",
+        "libscenesegmentation",
+        "libstmobile_classifier",
+        "libtensorflowlite_jni_gms_client",
         "libtiff",
-        "libmpbase",
+        "libtiffconverter",
+        "libtifffactory",
+        "libtiffsaver",
+        "libwindowreflectionreduction",
     ],
 }
 
-// Just define the most important ones that apps usually fail on first
+prebuilt_etc {
+    name: "privapp-permissions-gallery.xml",
+    src: "privapp-permissions-gallery.xml",
+    sub_dir: "permissions",
+    system_ext_specific: true,
+}
+
+// Native Libraries
+cc_prebuilt_library_shared {
+    name: "libaipasserbysegmentation",
+    target: { android_arm64: { srcs: ["lib/arm64/libaipasserbysegmentation.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libaiphotoeraser",
+    target: { android_arm64: { srcs: ["lib/arm64/libaiphotoeraser.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libandroidx.graphics.path",
+    target: { android_arm64: { srcs: ["lib/arm64/libandroidx.graphics.path.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
 cc_prebuilt_library_shared {
     name: "libcore",
-    target: {
-        android_arm64: {
-            srcs: ["lib/arm64/libcore.so"],
-        },
-    },
+    target: { android_arm64: { srcs: ["lib/arm64/libcore.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcvface_api",
+    target: { android_arm64: { srcs: ["lib/arm64/libcvface_api.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libdata_crypto",
+    target: { android_arm64: { srcs: ["lib/arm64/libdata_crypto.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libeyeglassreflectionreduction",
+    target: { android_arm64: { srcs: ["lib/arm64/libeyeglassreflectionreduction.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libflarereduction",
+    target: { android_arm64: { srcs: ["lib/arm64/libflarereduction.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libglide-webp",
+    target: { android_arm64: { srcs: ["lib/arm64/libglide-webp.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libjni_classifier_api",
+    target: { android_arm64: { srcs: ["lib/arm64/libjni_classifier_api.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libjni_cvface_api",
+    target: { android_arm64: { srcs: ["lib/arm64/libjni_cvface_api.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmedia_editor",
+    target: { android_arm64: { srcs: ["lib/arm64/libmedia_editor.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmlkitcommonpipeline",
+    target: { android_arm64: { srcs: ["lib/arm64/libmlkitcommonpipeline.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libscenesegmentation",
+    target: { android_arm64: { srcs: ["lib/arm64/libscenesegmentation.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libstmobile_classifier",
+    target: { android_arm64: { srcs: ["lib/arm64/libstmobile_classifier.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libtensorflowlite_jni_gms_client",
+    target: { android_arm64: { srcs: ["lib/arm64/libtensorflowlite_jni_gms_client.so"] } },
     compile_multilib: "64",
     check_elf_files: false,
     system_ext_specific: true,
@@ -30,28 +170,40 @@ cc_prebuilt_library_shared {
 
 cc_prebuilt_library_shared {
     name: "libtiff",
-    target: {
-        android_arm64: {
-            srcs: ["lib/arm64/libtiff.so"],
-        },
-    },
+    target: { android_arm64: { srcs: ["lib/arm64/libtiff.so"] } },
     compile_multilib: "64",
     check_elf_files: false,
     system_ext_specific: true,
 }
 
 cc_prebuilt_library_shared {
-    name: "libmpbase",
-    target: {
-        android_arm64: {
-            srcs: ["lib/arm64/libmpbase.so"],
-        },
-    },
+    name: "libtiffconverter",
+    target: { android_arm64: { srcs: ["lib/arm64/libtiffconverter.so"] } },
     compile_multilib: "64",
     check_elf_files: false,
     system_ext_specific: true,
 }
 
-// For the rest of the libraries, if the app still crashes, 
-// you can add them one by one or use a 'prebuilt_etc' 
-// to just dump the whole 'lib' folder into the system.
+cc_prebuilt_library_shared {
+    name: "libtifffactory",
+    target: { android_arm64: { srcs: ["lib/arm64/libtifffactory.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libtiffsaver",
+    target: { android_arm64: { srcs: ["lib/arm64/libtiffsaver.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libwindowreflectionreduction",
+    target: { android_arm64: { srcs: ["lib/arm64/libwindowreflectionreduction.so"] } },
+    compile_multilib: "64",
+    check_elf_files: false,
+    system_ext_specific: true,
+}
