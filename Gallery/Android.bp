@@ -39,6 +39,7 @@ android_app_import {
     // Dependencies required for the app to function at runtime
     required: [
         "privapp-permissions-gallery.xml",
+        "NothingStub",
         "libaipasserbysegmentation",
         "libaiphotoeraser",
         "libandroidx.graphics.path",
